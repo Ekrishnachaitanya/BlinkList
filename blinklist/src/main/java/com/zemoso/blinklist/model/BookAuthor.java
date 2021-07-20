@@ -1,5 +1,6 @@
 package com.zemoso.blinklist.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,10 +21,12 @@ public class BookAuthor {
 
     @ManyToOne
     @JoinColumn(name = "book_id")
+    @JsonIgnore
     private Book book;
 
     @ManyToOne
     @JoinColumn(name = "author_id")
+    @JsonIgnore
     private User author;
 
 }

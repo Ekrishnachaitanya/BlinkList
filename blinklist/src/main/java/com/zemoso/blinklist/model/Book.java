@@ -1,5 +1,6 @@
 package com.zemoso.blinklist.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -45,12 +46,15 @@ public class Book {
     private Boolean audioAvailability;
 
     @OneToMany(mappedBy = "book")
+    @JsonIgnore
     private Set<BookCategory> bookCategory;
 
     @OneToMany(mappedBy = "book")
+    @JsonIgnore
     private Set<BookHighlights> bookHighlights;
 
     @OneToMany(mappedBy = "book")
+    @JsonIgnore
     private Set<UserLibrary> userLibrary;
 
     @OneToMany(mappedBy = "book")
