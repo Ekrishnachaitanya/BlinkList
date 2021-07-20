@@ -3,6 +3,7 @@ package com.zemoso.blinklist.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "category")
@@ -20,5 +21,8 @@ public class Category {
 
     @Column(name = "category_name")
     private String categoryName;
+
+    @OneToMany(mappedBy = "category")
+    Set<BookCategory> bookCategory;
 
 }

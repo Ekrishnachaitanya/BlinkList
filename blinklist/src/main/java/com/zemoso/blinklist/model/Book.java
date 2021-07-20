@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "book")
@@ -42,5 +43,17 @@ public class Book {
 
     @Column(name = "audio_availability")
     private Boolean audioAvailability;
+
+    @OneToMany(mappedBy = "book")
+    private Set<BookCategory> bookCategory;
+
+    @OneToMany(mappedBy = "book")
+    private Set<BookHighlights> bookHighlights;
+
+    @OneToMany(mappedBy = "book")
+    private Set<UserLibrary> userLibrary;
+
+    @OneToMany(mappedBy = "book")
+    private Set<BookAuthor> bookAuthor;
 
 }
