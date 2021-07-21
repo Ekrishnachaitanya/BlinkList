@@ -26,7 +26,6 @@ public class BookAuthor {
 
     @ManyToOne
     @JoinColumn(name = "author_id")
-    @JsonIgnore
-    private User author;
+    private Author author;
 
 }

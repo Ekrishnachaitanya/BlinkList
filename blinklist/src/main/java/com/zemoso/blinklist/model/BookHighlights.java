@@ -1,11 +1,12 @@
 package com.zemoso.blinklist.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "book_category")
+@Table(name = "book_highlights")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,6 +21,7 @@ public class BookHighlights {
 
     @ManyToOne
     @JoinColumn(name = "book_id")
+    @JsonIgnore
     private Book book;
 
     @Column(name = "chapter")

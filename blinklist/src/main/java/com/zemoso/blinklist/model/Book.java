@@ -50,7 +50,6 @@ public class Book {
     private Set<BookCategory> bookCategory;
 
     @OneToMany(mappedBy = "book")
-    @JsonIgnore
     private Set<BookHighlights> bookHighlights;
 
     @OneToMany(mappedBy = "book")
