@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class BookCategory {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_category_id")
     private Integer bookCategoryId;
 

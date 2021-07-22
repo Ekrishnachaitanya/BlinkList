@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class UserLibrary {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_library_id")
     private Integer userLibraryId;
 

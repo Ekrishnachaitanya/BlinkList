@@ -22,8 +22,8 @@ public class UserController {
         return userService.getFinishedBooksBasedOnUser(id);
     }
 
-    @PostMapping(value = "/books/{bookId}")
-    public boolean addBookToUsersLibrary(@RequestParam("id") Integer userId,@PathVariable("bookId") Integer bookId){
+    @GetMapping(value = "/book/{id}")
+    public boolean addBookToUsersLibrary(@RequestParam("id") Integer userId,@PathVariable("id") Integer bookId){
         return userService.addBookToUsersLibrary(userId,bookId);
     }
 
