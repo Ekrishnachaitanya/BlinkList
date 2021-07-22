@@ -45,10 +45,7 @@ public class BookCategoryService implements BookService {
     @Override
     public Book getBookDetails(Integer bookId) {
         Optional<Book> book = bookRepository.findById(bookId);
-        if(book.isPresent()){
-            return book.get();
-        }
-        return null;
+        return book.orElse(null);
     }
 
 
