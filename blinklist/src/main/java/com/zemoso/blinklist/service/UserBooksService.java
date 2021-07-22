@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,7 +48,7 @@ public class UserBooksService implements UserService {
 
     @Override
     public boolean addBookToUsersLibrary(Integer userId, Integer bookId) {
-        Book book = bookService.getBookDetails(bookId);
+        Book book = bookService.getBookById(bookId);
         if(book==null){
             return false;
         }
@@ -58,5 +59,19 @@ public class UserBooksService implements UserService {
         userLibrary.setCompleted(false);
         userLibraryRepository.save(userLibrary);
         return true;
+    }
+
+    @Override
+    public boolean changeStatusOfBook(Integer userId, Integer bookId) {
+        User user = userRepository.getById(userId);
+        Set<UserLibrary> userBooks = user.getUserLibrary();
+        for(UserLibrary userLibrary:userBooks){
+            if(userLibrary.getBook().getBookId().equals(bookId)){
+                userLibrary.setCompleted(true);
+                userLibraryRepository.save(userLibrary);
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -9,4 +9,6 @@ public interface UserService {
 
     boolean addBookToUsersLibrary(Integer userId, Integer bookId);
 
+    boolean changeStatusOfBook(Integer userId, Integer bookId);
+
 }

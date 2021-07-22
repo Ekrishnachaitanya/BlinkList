@@ -1,0 +1,54 @@
+package com.zemoso.blinklist.dto;
+
+import com.zemoso.blinklist.model.Book;
+import com.zemoso.blinklist.model.BookAuthor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.time.LocalDate;
+import java.util.Set;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+public class BookResponse {
+
+    private Integer bookId;
+
+    private String title;
+
+    private String description;
+
+    private String photoPath;
+
+    private String synopsis;
+
+    private Integer totalPages;
+
+    private Integer approximateMinutes;
+
+    private LocalDate publishedDate;
+
+    private Integer numberOfReads;
+
+    private Boolean audioAvailability;
+
+    private Set<BookAuthor> bookAuthor;
+
+    public BookResponse(Book book) {
+        this.bookId = book.getBookId();
+        this.title = book.getTitle();
+        this.description = book.getDescription();
+        this.photoPath = book.getPhotoPath();
+        this.synopsis = book.getSynopsis();
+        this.totalPages = book.getTotalPages();
+        this.approximateMinutes = book.getApproximateMinutes();
+        this.publishedDate = book.getPublishedDate();
+        this.numberOfReads = book.getNumberOfReads();
+        this.audioAvailability = book.getAudioAvailability();
+        this.setBookAuthor(book.getBookAuthor());
+    }
+}

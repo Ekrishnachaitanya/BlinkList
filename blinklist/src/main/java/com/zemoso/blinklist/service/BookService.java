@@ -1,16 +1,20 @@
 package com.zemoso.blinklist.service;
 
+import com.zemoso.blinklist.dto.BookResponse;
+import com.zemoso.blinklist.dto.BooksHighlightsResponse;
+import com.zemoso.blinklist.dto.CategoryResponse;
 import com.zemoso.blinklist.model.Book;
-import com.zemoso.blinklist.model.Category;
 
 import java.util.List;
 
 public interface BookService {
-    Category getBooksByCategory(String categoryName);
+    CategoryResponse getBooksByCategory(String categoryName);
 
-    List<Book> getBookHighlights();
+    List<BooksHighlightsResponse> getBookHighlights();
 
-    List<Book> getBooksBasedOnSearch(String searchKeyword);
+    List<BookResponse> getBooksBasedOnSearch(String searchKeyword);
 
-    Book getBookDetails(Integer bookId);
+    BookResponse getBookDetails(Integer bookId);
+
+    Book getBookById(Integer bookId);
 }
