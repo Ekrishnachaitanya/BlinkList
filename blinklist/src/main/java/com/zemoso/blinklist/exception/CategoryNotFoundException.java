@@ -1,7 +1,5 @@
 package com.zemoso.blinklist.exception;
 
-public class CategoryNotFoundException extends Exception{
-    public CategoryNotFoundException(){
-        super(" Given Category not found");
-    }
+public class CategoryNotFoundException extends RuntimeException{
+    private static final long serialVersionUID = 1L;
 }

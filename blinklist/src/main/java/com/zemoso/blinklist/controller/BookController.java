@@ -25,13 +25,14 @@ public class BookController {
 
     Logger logger = LoggerFactory.getLogger(BookController.class);
 
+    @GetMapping(value = "/books")
+    public List<BookResponse> getAllBooks(){
+        return bookService.getAllBooks();
+    }
+
     @GetMapping(value = "/subjects/{category}")
     public CategoryResponse getBooksByCategory(@PathVariable("category") String category) throws CategoryNotFoundException {
-        try{
             return bookService.getBooksByCategory(category);
-        }catch(CategoryNotFoundException categoryNotFoundException){
-            throw new CategoryNotFoundException();
-        }
     }
 
     @GetMapping(value = "/books/highlights")
@@ -46,49 +47,28 @@ public class BookController {
 
     @GetMapping(value = "/books/{bookId}")
     public BookResponse getBookDetailsById(@PathVariable("bookId") Integer id)throws BookNotFoundException {
-        try{
             return bookService.getBookDetails(id);
-        }catch (BookNotFoundException bookNotFoundException){
-            logger.error("no book");
-            throw new BookNotFoundException();
-        }
     }
 
     @PostMapping(value = "/books")
-    public ResponseEntity<BookCategoryRequest> addBook(@RequestBody BookCategoryRequest bookCategoryRequest){
-        boolean inserted = bookService.addBookDetails(bookCategoryRequest);
-        if(inserted){
-            log.debug("Inserted a Book");
-            return new ResponseEntity<>(bookCategoryRequest, HttpStatus.CREATED);
-        }
-        log.warn(" Didn't get inserted into database");
-        return new ResponseEntity<>(bookCategoryRequest, HttpStatus.EXPECTATION_FAILED);
+    public ResponseEntity<BookResponse> addBook(@RequestBody BookCategoryRequest bookCategoryRequest){
+        log.debug("Inserting a Book");
+        return new ResponseEntity<>(bookService.addBookDetails(bookCategoryRequest), HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/books/{bookId}")
-    public ResponseEntity<BookCategoryRequest> updateBook(@RequestBody BookCategoryRequest bookCategoryRequest){
-        boolean updated = bookService.updateBookDetails(bookCategoryRequest);
-        if(updated){
-            log.debug("Updated a Book");
-            return new ResponseEntity<>(bookCategoryRequest,HttpStatus.ACCEPTED);
-        }
-        log.warn("Didn't get updated into database");
-        return new ResponseEntity<>(bookCategoryRequest, HttpStatus.EXPECTATION_FAILED);
+    public ResponseEntity<BookResponse> updateBook(@RequestBody BookCategoryRequest bookCategoryRequest){
+        log.debug("Updating a Book");
+        return new ResponseEntity<>(bookService.updateBookDetails(bookCategoryRequest), HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "/books/{bookId}")
     public ResponseEntity<Boolean> deleteBook(@PathVariable("bookId") Integer bookId) throws BookNotFoundException {
-        boolean deleted = false;
-        try {
-            deleted = bookService.deleteBookDetails(bookId);
-        }catch (BookNotFoundException bookNotFoundException){
-            throw new BookNotFoundException();
-        }
-        if(deleted){
+        if( bookService.deleteBookDetails(bookId)){
             log.debug("Deleted a Book");
             return new ResponseEntity<>(true,HttpStatus.ACCEPTED);
         }
-        return new ResponseEntity<>(false,HttpStatus.EXPECTATION_FAILED);
+        throw new BookNotFoundException();
     }
 
 }

@@ -1,7 +1,5 @@
 package com.zemoso.blinklist.exception;
 
-public class UserNotFoundException extends Exception{
-    public UserNotFoundException(){
-        super(" Users isn't found");
-    }
+public class UserNotFoundException extends RuntimeException{
+    private static final long serialVersionUID = 1L;
 }

@@ -1,7 +1,5 @@
 package com.zemoso.blinklist.exception;
 
-public class BookNotFoundException extends Exception{
-    public BookNotFoundException(){
-        super(" Book isn't found.");
-    }
+public class BookNotFoundException extends RuntimeException{
+    private static final long serialVersionUID = 1L;
 }

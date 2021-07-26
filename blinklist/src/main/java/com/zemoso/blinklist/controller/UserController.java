@@ -20,38 +20,22 @@ public class UserController {
 
     @GetMapping(value = "/books/currently-reading")
     public UserResponse getReadingBooksByUser(@RequestHeader("userId") Integer userId) throws UserNotFoundException {
-        try {
-            return userService.getReadingBooksBasedOnUser(userId);
-        }catch (UserNotFoundException userNotFoundException){
-            throw new UserNotFoundException();
-        }
+        return userService.getReadingBooksBasedOnUser(userId);
     }
 
     @GetMapping(value = "/books/finished")
     public UserResponse getCompletedBooksByUser(@RequestHeader("userId") Integer userId) throws UserNotFoundException {
-        try {
-            return userService.getFinishedBooksBasedOnUser(userId);
-        }catch (UserNotFoundException userNotFoundException){
-            throw new UserNotFoundException();
-        }
+        return userService.getFinishedBooksBasedOnUser(userId);
     }
 
     @GetMapping(value = "/books/{bookId}")
     public boolean addBookToUsersLibrary(@RequestHeader("userId") Integer userId, @PathVariable("bookId") Integer bookId) throws BookNotFoundException{
-    	try {
-    		return userService.addBookToUsersLibrary(userId,bookId);
-    	}catch(BookNotFoundException bookNotFoundException) {
-            throw new BookNotFoundException();
-    	}
+        return userService.addBookToUsersLibrary(userId,bookId);
     }
 
     @GetMapping(value = "/books/{bookId}/status")
     public boolean changeBookStatusOfUser(@RequestHeader("userId") Integer userId,@PathVariable("bookId") Integer bookId) throws UserNotFoundException {
-        try {
-            return userService.changeStatusOfBook(userId, bookId);
-        }catch (UserNotFoundException userNotFoundException){
-            throw new UserNotFoundException();
-        }
+        return userService.changeStatusOfBook(userId, bookId);
     }
 
 }

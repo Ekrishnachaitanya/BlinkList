@@ -17,13 +17,15 @@ public interface BookService {
 
     List<BookResponse> getBooksBasedOnSearch(String searchKeyword);
 
+    List<BookResponse> getAllBooks();
+
     BookResponse getBookDetails(Integer bookId) throws BookNotFoundException;
 
     Book getBookById(Integer bookId) throws BookNotFoundException;
 
-    boolean addBookDetails(BookCategoryRequest bookCategoryRequest);
+    BookResponse addBookDetails(BookCategoryRequest bookCategoryRequest);
 
-    boolean updateBookDetails(BookCategoryRequest bookCategoryRequest);
+    BookResponse updateBookDetails(BookCategoryRequest bookCategoryRequest);
 
     boolean deleteBookDetails(Integer bookId)throws BookNotFoundException;
 }
