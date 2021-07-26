@@ -30,7 +30,7 @@ public class BookHighlights {
     @Column(name = "chapter_title")
     private String chapterTitle;
 
-    @Column(name = "chapter_highlight")
+    @Column(name = "chapter_highlights")
     private String chapterHighlight;
 
 }

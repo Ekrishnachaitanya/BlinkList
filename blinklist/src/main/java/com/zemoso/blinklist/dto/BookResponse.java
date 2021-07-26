@@ -1,7 +1,7 @@
 package com.zemoso.blinklist.dto;
 
+import com.zemoso.blinklist.model.Author;
 import com.zemoso.blinklist.model.Book;
-import com.zemoso.blinklist.model.BookAuthor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -36,7 +36,7 @@ public class BookResponse {
 
     private Boolean audioAvailability;
 
-    private Set<BookAuthor> bookAuthor;
+    private Set<Author> bookAuthor;
 
     public BookResponse(Book book) {
         this.bookId = book.getBookId();

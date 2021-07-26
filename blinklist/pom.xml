@@ -47,14 +47,18 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!--<dependency>
+		<dependency>
 			<groupId>org.sonarsource.scanner.maven</groupId>
 			<artifactId>sonar-maven-plugin</artifactId>
 			<version>3.2</version>
-		</dependency>-->
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
 	</dependencies>
 
-	<!--<profiles>
+	<profiles>
 		<profile>
 			<id>sonar</id>
 			<activation>
@@ -68,7 +72,7 @@
 				<sonar.password>9347596166</sonar.password>
 			</properties>
 		</profile>
-	</profiles>-->
+	</profiles>
 
 	<build>
 		<plugins>

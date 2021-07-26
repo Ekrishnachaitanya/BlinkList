@@ -45,9 +45,13 @@ public class Book {
     @Column(name = "audio_availability")
     private Boolean audioAvailability;
 
-    @OneToMany(mappedBy = "book")
+    @ManyToMany
+    @JoinTable(
+            name = "book_category",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
     @JsonIgnore
-    private Set<BookCategory> bookCategory;
+    private Set<Category> bookCategory;
 
     @OneToMany(mappedBy = "book")
     private Set<BookHighlights> bookHighlights;
@@ -56,7 +60,11 @@ public class Book {
     @JsonIgnore
     private Set<UserLibrary> userLibrary;
 
-    @OneToMany(mappedBy = "book")
-    private Set<BookAuthor> bookAuthor;
+    @ManyToMany
+    @JoinTable(
+            name = "book_author",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private Set<Author> bookAuthor;
 
 }

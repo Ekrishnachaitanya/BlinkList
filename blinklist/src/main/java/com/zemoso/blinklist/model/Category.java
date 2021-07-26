@@ -1,5 +1,6 @@
 package com.zemoso.blinklist.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,7 +23,7 @@ public class Category {
     @Column(name = "category_name")
     private String categoryName;
 
-    @OneToMany(mappedBy = "category")
-    Set<BookCategory> bookCategory;
+    @ManyToMany(mappedBy = "bookCategory")
+    Set<Book> books;
 
 }

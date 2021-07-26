@@ -30,8 +30,15 @@ public class Author {
     @Column(name = "area_of_interest")
     private String areaOfInterest;
 
-    @OneToMany(mappedBy = "author")
+    @ManyToMany(mappedBy = "bookAuthor")
     @JsonIgnore
-    private Set<BookAuthor> bookAuthor;
+    private Set<Book> books;
+
+    public Author(Integer authorId, String firstName, String lastName, String areaOfInterest) {
+        this.authorId = authorId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.areaOfInterest = areaOfInterest;
+    }
 
 }
