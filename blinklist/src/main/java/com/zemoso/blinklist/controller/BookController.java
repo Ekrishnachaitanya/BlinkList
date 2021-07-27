@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 @Slf4j
 @RestController
@@ -51,13 +52,13 @@ public class BookController {
     }
 
     @PostMapping(value = "/books")
-    public ResponseEntity<BookResponse> addBook(@RequestBody BookCategoryRequest bookCategoryRequest){
+    public ResponseEntity<BookResponse> addBook(@Valid @RequestBody BookCategoryRequest bookCategoryRequest){
         log.debug("Inserting a Book");
         return new ResponseEntity<>(bookService.addBookDetails(bookCategoryRequest), HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/books/{bookId}")
-    public ResponseEntity<BookResponse> updateBook(@RequestBody BookCategoryRequest bookCategoryRequest){
+    public ResponseEntity<BookResponse> updateBook(@Valid @RequestBody BookCategoryRequest bookCategoryRequest){
         log.debug("Updating a Book");
         return new ResponseEntity<>(bookService.updateBookDetails(bookCategoryRequest), HttpStatus.CREATED);
     }

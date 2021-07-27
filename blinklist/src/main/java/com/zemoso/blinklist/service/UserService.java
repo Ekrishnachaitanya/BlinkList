@@ -9,6 +9,7 @@ public interface UserService {
 
     UserResponse getFinishedBooksBasedOnUser(Integer userId)throws UserNotFoundException;
 
+    @SuppressWarnings("SameReturnValue")
     boolean addBookToUsersLibrary(Integer userId, Integer bookId)throws BookNotFoundException;
 
     boolean changeStatusOfBook(Integer userId, Integer bookId)throws UserNotFoundException;

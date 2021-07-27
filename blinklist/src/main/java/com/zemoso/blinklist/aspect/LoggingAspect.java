@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoggingAspect {
 
-    Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
+    final Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 
     @Before(value = "execution(* com.zemoso.blinklist.controller.BookController.getAllBooks())")
     public void logBefore(JoinPoint joinPoint){

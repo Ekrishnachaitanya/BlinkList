@@ -10,6 +10,7 @@ import com.zemoso.blinklist.model.Book;
 
 import java.util.List;
 
+@SuppressWarnings("ALL")
 public interface BookService {
     CategoryResponse getBooksByCategory(String categoryName)throws CategoryNotFoundException;
 
