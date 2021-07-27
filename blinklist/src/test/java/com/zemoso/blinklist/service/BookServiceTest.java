@@ -64,11 +64,8 @@ class BookServiceTest {
         Book book1 = new Book(1,"Example","Example description","","Example Synopsis",300,20, LocalDate.parse("2019-03-01"),1500,true,bookCategory,bookHighlights,null,authors1);
         books.add(book1);
         when(bookRepository.findAll()).thenReturn(books);
-
         List<BooksHighlightsResponse> bookHighlightsList = bookCategoryService.getBookHighlights();
-
         assertEquals(2,bookHighlightsList.get(0).getBookHighlights().size());
-
     }
 
 }

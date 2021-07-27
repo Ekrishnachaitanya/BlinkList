@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class CategoryResponse {
     private Integer categoryId;

@@ -2,16 +2,14 @@ package com.zemoso.blinklist.dto;
 
 import com.zemoso.blinklist.model.Book;
 import com.zemoso.blinklist.model.BookHighlights;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class BooksHighlightsResponse {
     private Integer bookId;

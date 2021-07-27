@@ -89,6 +89,12 @@
 		</profile>
 	</profiles>
 
+	<properties>
+		<sonar.projectKey>Ekrishnachaitanya_BlinkList</sonar.projectKey>
+		<sonar.organization>ekrishnachaitanya</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+	</properties>
+
 	<build>
 		<plugins>
 			<plugin>
