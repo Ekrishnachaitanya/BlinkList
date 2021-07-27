@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
@@ -18,8 +19,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class BookServiceTest {
@@ -39,7 +40,7 @@ class BookServiceTest {
         bookCategory.add(new Category(1,"Comedy",null));
         Book book1 = new Book(1,"Example","Example description","","Example Synopsis",300,20, LocalDate.parse("2019-03-01"),1500,true,bookCategory,null,null,authors1);
         books.add(book1);
-        when(bookRepository.findAll()).thenReturn(books);
+        Mockito.when(bookRepository.findAll()).thenReturn(books);
 
         //test
         List<BookResponse> bookResponseList = bookCategoryService.getAllBooks();
@@ -47,7 +48,7 @@ class BookServiceTest {
         assertEquals(1,bookResponseList.size());
         assertEquals("Example",bookResponseList.get(0).getTitle());
 
-        verify(bookRepository,times(1)).findAll();
+        Mockito.verify(bookRepository,Mockito.times(1)).findAll();
     }
 
     @Test
@@ -63,7 +64,7 @@ class BookServiceTest {
         bookHighlights.add(new BookHighlights(2,null,2,"Ending","Ending Highlight"));
         Book book1 = new Book(1,"Example","Example description","","Example Synopsis",300,20, LocalDate.parse("2019-03-01"),1500,true,bookCategory,bookHighlights,null,authors1);
         books.add(book1);
-        when(bookRepository.findAll()).thenReturn(books);
+        Mockito.when(bookRepository.findAll()).thenReturn(books);
         List<BooksHighlightsResponse> bookHighlightsList = bookCategoryService.getBookHighlights();
         assertEquals(2,bookHighlightsList.get(0).getBookHighlights().size());
     }

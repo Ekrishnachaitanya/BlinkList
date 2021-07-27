@@ -71,7 +71,13 @@
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jsr310</artifactId>
 		</dependency>
-    </dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.7.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
 	<profiles>
 		<profile>
@@ -80,20 +86,18 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<sonar.host.url>
+				<!--<sonar.host.url>
 					http://localhost:9000
 				</sonar.host.url>
 				<sonar.login>admin</sonar.login>
-				<sonar.password>9347596166</sonar.password>
+				<sonar.password>9347596166</sonar.password>-->
+				<sonar.projectKey>Ekrishnachaitanya_BlinkList</sonar.projectKey>
+				<sonar.organization>ekrishnachaitanya</sonar.organization>
+				<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
 			</properties>
 		</profile>
 	</profiles>
-
-	<properties>
-		<sonar.projectKey>Ekrishnachaitanya_BlinkList</sonar.projectKey>
-		<sonar.organization>ekrishnachaitanya</sonar.organization>
-		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-	</properties>
 
 	<build>
 		<plugins>
