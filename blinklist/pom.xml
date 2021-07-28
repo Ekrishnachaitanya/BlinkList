@@ -56,7 +56,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
@@ -86,12 +85,9 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <sonar.host.url>
-                    http://localhost:9000
-                </sonar.host.url>
-                <sonar.login>admin</sonar.login>
-                <sonar.password>9347596166</sonar.password>
-
+                <sonar.projectKey>Ekrishnachaitanya_BlinkList</sonar.projectKey>
+                <sonar.organization>ekrishnachaitanya</sonar.organization>
+                <sonar.host.url>https://sonarcloud.io</sonar.host.url>
             </properties>
         </profile>
     </profiles>
