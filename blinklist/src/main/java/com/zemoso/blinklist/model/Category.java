@@ -1,5 +1,6 @@
 package com.zemoso.blinklist.model;
 
+import com.zemoso.blinklist.dto.CategoryRequest;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,5 +25,9 @@ public class Category {
 
     @ManyToMany(mappedBy = "bookCategory")
     Set<Book> books;
+
+    public Category(CategoryRequest categoryRequest){
+        this.categoryName = categoryRequest.getCategoryName();
+    }
 
 }

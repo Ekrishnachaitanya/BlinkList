@@ -3,9 +3,8 @@ package com.zemoso.blinklist.controller;
 import com.zemoso.blinklist.dto.BookCategoryRequest;
 import com.zemoso.blinklist.dto.BookResponse;
 import com.zemoso.blinklist.dto.BooksHighlightsResponse;
-import com.zemoso.blinklist.dto.CategoryResponse;
 import com.zemoso.blinklist.exception.BookNotFoundException;
-import com.zemoso.blinklist.exception.CategoryNotFoundException;
+import com.zemoso.blinklist.model.Book;
 import com.zemoso.blinklist.service.BookService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -31,11 +30,6 @@ public class BookController {
         return bookService.getAllBooks();
     }
 
-    @GetMapping(value = "/subjects/{category}")
-    public CategoryResponse getBooksByCategory(@PathVariable("category") String category) throws CategoryNotFoundException {
-            return bookService.getBooksByCategory(category);
-    }
-
     @GetMapping(value = "/books/highlights")
     public List<BooksHighlightsResponse> getBooksHighlights(){
         return bookService.getBookHighlights();
@@ -54,13 +48,13 @@ public class BookController {
     @PostMapping(value = "/books")
     public ResponseEntity<BookResponse> addBook(@Valid @RequestBody BookCategoryRequest bookCategoryRequest){
         log.debug("Inserting a Book");
-        return new ResponseEntity<>(bookService.addBookDetails(bookCategoryRequest), HttpStatus.CREATED);
+        return new ResponseEntity<>(bookService.addBookDetails(new Book(bookCategoryRequest)), HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/books/{bookId}")
     public ResponseEntity<BookResponse> updateBook(@Valid @RequestBody BookCategoryRequest bookCategoryRequest){
         log.debug("Updating a Book");
-        return new ResponseEntity<>(bookService.updateBookDetails(bookCategoryRequest), HttpStatus.CREATED);
+        return new ResponseEntity<>(bookService.updateBookDetails(new Book(bookCategoryRequest)), HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "/books/{bookId}")

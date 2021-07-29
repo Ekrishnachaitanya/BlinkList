@@ -1,5 +1,7 @@
 package com.zemoso.blinklist.dto;
 
+import com.zemoso.blinklist.model.Author;
+import com.zemoso.blinklist.model.Category;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -42,9 +44,9 @@ public class BookCategoryRequest {
     private Boolean audioAvailability;
 
     @NonNull
-    private Set<AuthorRequest> bookAuthor;
+    private Set<Author> bookAuthor;
 
     @NonNull
-    private Set<CategoryRequest> bookCategory;
+    private Set<Category> bookCategory;
 
 }

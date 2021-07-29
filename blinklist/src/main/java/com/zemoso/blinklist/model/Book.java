@@ -1,6 +1,7 @@
 package com.zemoso.blinklist.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.zemoso.blinklist.dto.BookCategoryRequest;
 import lombok.*;
 
 import javax.persistence.*;
@@ -66,5 +67,20 @@ public class Book {
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> bookAuthor;
+
+    public Book(BookCategoryRequest bookCategoryRequest){
+        this.bookId = bookCategoryRequest.getBookId();
+        this.title = bookCategoryRequest.getTitle();
+        this.description = bookCategoryRequest.getDescription();
+        this.photoPath=bookCategoryRequest.getPhotoPath();
+        this.synopsis=bookCategoryRequest.getSynopsis();
+        this.totalPages=bookCategoryRequest.getTotalPages();
+        this.approximateMinutes = bookCategoryRequest.getApproximateMinutes();
+        this.publishedDate = bookCategoryRequest.getPublishedDate();
+        this.numberOfReads=bookCategoryRequest.getNumberOfReads();
+        this.audioAvailability = bookCategoryRequest.getAudioAvailability();
+        this.bookCategory = bookCategoryRequest.getBookCategory();
+        this.bookAuthor=bookCategoryRequest.getBookAuthor();
+    }
 
 }

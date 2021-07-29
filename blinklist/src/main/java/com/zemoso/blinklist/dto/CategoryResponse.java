@@ -18,6 +18,7 @@ public class CategoryResponse {
     public CategoryResponse(Category category){
         this.categoryId = category.getCategoryId();
         this.categoryName = category.getCategoryName();
-        this.books = category.getBooks().stream().map(BookResponse::new).collect(Collectors.toSet());
+        if(category.getBooks()!=null)
+            this.books = category.getBooks().stream().map(BookResponse::new).collect(Collectors.toSet());
     }
 }

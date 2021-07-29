@@ -12,7 +12,6 @@ import java.util.List;
 
 @SuppressWarnings("ALL")
 public interface BookService {
-    CategoryResponse getBooksByCategory(String categoryName)throws CategoryNotFoundException;
 
     List<BooksHighlightsResponse> getBookHighlights();
 
@@ -24,9 +23,9 @@ public interface BookService {
 
     Book getBookById(Integer bookId) throws BookNotFoundException;
 
-    BookResponse addBookDetails(BookCategoryRequest bookCategoryRequest);
+    BookResponse addBookDetails(Book book);
 
-    BookResponse updateBookDetails(BookCategoryRequest bookCategoryRequest);
+    BookResponse updateBookDetails(Book book);
 
     boolean deleteBookDetails(Integer bookId)throws BookNotFoundException;
 }

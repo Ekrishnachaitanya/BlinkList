@@ -83,32 +83,6 @@ class BookControllerTest {
     }
 
     @Test
-    void getBooksByCategoryTest() throws Exception {
-        Set<Author> authors = new HashSet<>();
-        authors.add(new Author(1,"James","Harden","Science Friction"));
-        authors.add(new Author(2,"Gon","Killua","Manga"));
-        BookResponse book1 = new BookResponse(1,"Example","Example description","","Example Synopsis",300,20, LocalDate.parse("2019-03-01"),1500,true,authors);
-        BookResponse book2 = new BookResponse(2,"Example 2","Example description 2","","Example Synopsis 2",500,15, LocalDate.parse("2018-03-01"),1400,true,authors);
-        Set<BookResponse> bookResponses = new HashSet<>();
-        bookResponses.add(book1);
-        bookResponses.add(book2);
-        CategoryResponse categoryResponse = new CategoryResponse(1,"Drama",bookResponses);
-
-        Mockito.when(bookService.getBooksByCategory("Drama")).thenReturn(categoryResponse);
-
-        String uri = "/subjects/Drama";
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(uri)
-                .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
-
-        int status = mvcResult.getResponse().getStatus();
-        assertEquals(200, status);
-        String content = mvcResult.getResponse().getContentAsString();
-        CategoryResponse categoryBooks = mapFromJson(content, CategoryResponse.class);
-        assertEquals("Drama",categoryBooks.getCategoryName());
-        assertEquals(2,categoryBooks.getBooks().size());
-    }
-
-    @Test
     void getBookHighlightsTest() throws Exception {
         Set<BookHighlights> booksHighlights = new HashSet<>();
         BookHighlights bookHighlights1 = new BookHighlights(1,null,1,"Introduction","Introduction Highlight");
